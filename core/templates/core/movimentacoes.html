@@ -1,0 +1,7 @@
+<h1>Movimentações de Estoque</h1>
+<a href="{% url 'nova_movimentacao' %}">Nova movimentação</a>
+<ul>
+  {% for m in movimentacoes %}
+    <li>{{ m.data }} - {{ m.tipo }} de {{ m.quantidade }} {{ m.produto.nome }}</li>
+  {% endfor %}
+</ul>
