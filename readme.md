@@ -38,37 +38,38 @@ estoque_vendas/
 │   └── wsgi.py
 ├── manage.py
 └── db.sqlite3
+```
 
 
-⚙️ Tecnologias e Bibliotecas
-Python 3.12
+## Tecnologias e Bibliotecas
+- Python 3.12
 
-Django 5.2.4
+- Django 5.2.4
 
-SQLite (banco padrão do Django para testes locais)
+- SQLite (banco padrão do Django para testes locais)
 
-📦 Instalação e Execução
-Clone o repositório:
+## 📦 Instalação e Execução
+- Clone o repositório:
 
-bash
-Copiar
-Editar
-git clone https://github.com/seu-usuario/seu-repo.git
+```bash
+
+git clone 
 cd seu-repo
-Crie o ambiente virtual e instale as dependências:
+```
+- Crie o ambiente virtual e instale as dependências:
 
-bash
-Copiar
-Editar
+```bash
+
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-Rode as migrações e o servidor:
+```
+- Rode as migrações e o servidor:
 
-bash
-Copiar
-Editar
+```bash
+
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+```
 Acesse: http://127.0.0.1:8000/admin/

@@ -1,7 +1,28 @@
-<h1>Movimentações de Estoque</h1>
-<a href="{% url 'nova_movimentacao' %}">Nova movimentação</a>
-<ul>
-  {% for m in movimentacoes %}
-    <li>{{ m.data }} - {{ m.tipo }} de {{ m.quantidade }} {{ m.produto.nome }}</li>
-  {% endfor %}
-</ul>
+{% extends 'core/base.html' %}
+
+{% block title %}Movimentações de Estoque{% endblock %}
+
+{% block content %}
+    <h2>📦 Movimentações</h2>
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Produto</th>
+            <th>Tipo</th>
+            <th>Quantidade</th>
+            <th>Observação</th>
+        </tr>
+        {% for m in movimentacoes %}
+        <tr>
+            <td>{{ m.data }}</td>
+            <td>{{ m.produto.nome }}</td>
+            <td>{{ m.tipo }}</td>
+            <td>{{ m.quantidade }}</td>
+            <td>{{ m.observacao }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'nova_movimentacao' %}" class="button-link">➕ Nova Movimentação</a>
+{% endblock %}

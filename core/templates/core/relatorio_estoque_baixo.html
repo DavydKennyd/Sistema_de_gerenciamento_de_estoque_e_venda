@@ -1,5 +1,8 @@
-<h1>📊 Relatório de Produtos com Estoque Baixo</h1>
+{% extends 'core/base.html' %}
 
+{% block title %}📊 Relatório de Produtos com Estoque Baixo{% endblock %}
+
+{% block content %}
 <table border="1" cellpadding="5">
     <tr>
         <th>Produto</th>
@@ -20,3 +23,4 @@
 </table>
 
 <a href="{% url 'movimentacoes_estoque' %}">🔙 Voltar para Movimentações</a>
+{% endblock %}

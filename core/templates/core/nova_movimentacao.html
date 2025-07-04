@@ -1,7 +1,12 @@
-<h1>Nova Movimentação de Estoque</h1>
+{% extends 'core/base.html' %}
+
+{% block title %}Nova Movimentação de Estoque{% endblock %}
+{% block content %}
+
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Salvar</button>
 </form>
 <a href="{% url 'movimentacoes_estoque' %}">Voltar</a>
+{% endblock %}
