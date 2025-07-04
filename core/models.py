@@ -27,6 +27,7 @@ class Produto(models.Model):
     descricao = models.TextField(blank=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade_estoque = models.IntegerField()
+    estoque_minimo = models.IntegerField(default=0)
     fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     data_cadastro = models.DateField(auto_now_add=True)
 

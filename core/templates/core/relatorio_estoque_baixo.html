@@ -1,0 +1,22 @@
+<h1>📊 Relatório de Produtos com Estoque Baixo</h1>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Produto</th>
+        <th>Quantidade em Estoque</th>
+        <th>Estoque Mínimo</th>
+    </tr>
+    {% for produto in produtos %}
+    <tr>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.quantidade_estoque }}</td>
+        <td>{{ produto.estoque_minimo }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">Todos os produtos estão com estoque normal ✅</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'movimentacoes_estoque' %}">🔙 Voltar para Movimentações</a>

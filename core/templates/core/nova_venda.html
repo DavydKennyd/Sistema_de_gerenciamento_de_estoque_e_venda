@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Venda</title>
+</head>
+<body>
+    <h1>🛒 Nova Venda</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ venda_form.as_p }}
+
+        <h3>Itens da Venda:</h3>
+        {{ formset.management_form }}
+
+        {% for form in formset %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                {{ form.as_p }}
+                {% if form.instance.pk %}
+                    <label>Excluir:</label> {{ form.DELETE }}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit">Finalizar Venda</button>
+    </form>
+
+    <a href="{% url 'movimentacoes_estoque' %}">🔙 Voltar</a>
+</body>
+</html>
