@@ -1,28 +1,39 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}Movimentações de Estoque{% endblock %}
+{% block title %}📦 Movimentações de Estoque{% endblock %}
 
 {% block content %}
-    <h2>📦 Movimentações</h2>
+<div class="container">
+    <h2>📦 Movimentações de Estoque</h2>
 
-    <table>
-        <tr>
-            <th>Data</th>
-            <th>Produto</th>
-            <th>Tipo</th>
-            <th>Quantidade</th>
-            <th>Observação</th>
-        </tr>
-        {% for m in movimentacoes %}
-        <tr>
-            <td>{{ m.data }}</td>
-            <td>{{ m.produto.nome }}</td>
-            <td>{{ m.tipo }}</td>
-            <td>{{ m.quantidade }}</td>
-            <td>{{ m.observacao }}</td>
-        </tr>
-        {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in movimentacoes %}
+            <tr>
+                <td>{{ m.data|date:"d/m/Y H:i" }}</td>
+                <td>{{ m.produto.nome }}</td>
+                <td>{{ m.tipo }}</td>
+                <td>{{ m.quantidade }}</td>
+                <td>{{ m.observacao }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Nenhuma movimentação registrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
-    <a href="{% url 'nova_movimentacao' %}" class="button-link">➕ Nova Movimentação</a>
+    <a href="{% url 'nova_movimentacao' %}" class="btn btn-primary">➕ Nova Movimentação</a>
+</div>
 {% endblock %}

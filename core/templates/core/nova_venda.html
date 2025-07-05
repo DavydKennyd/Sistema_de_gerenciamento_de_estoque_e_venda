@@ -1,28 +1,33 @@
 {% extends 'core/base.html' %}
+{% load static %}
+{% load form_filters %}
 
-{% block title %}Movimentações de Estoque{% endblock %}
+{% block title %}🛒 Nova Venda{% endblock %}
 
 {% block content %}
-    <h2>📦 Movimentações</h2>
+<div class="container">
+    <h2>🛒 Nova Venda</h2>
 
-    <table>
-        <tr>
-            <th>Data</th>
-            <th>Produto</th>
-            <th>Tipo</th>
-            <th>Quantidade</th>
-            <th>Observação</th>
-        </tr>
-        {% for m in movimentacoes %}
-        <tr>
-            <td>{{ m.data }}</td>
-            <td>{{ m.produto.nome }}</td>
-            <td>{{ m.tipo }}</td>
-            <td>{{ m.quantidade }}</td>
-            <td>{{ m.observacao }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <form method="post">
+        {% csrf_token %}
 
-    <a href="{% url 'nova_movimentacao' %}" class="button-link">➕ Nova Movimentação</a>
+        <div class="form-group">
+            {{ venda_form.cliente.label_tag }}
+            {{ venda_form.cliente|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group">
+            {{ item_form.produto.label_tag }}
+            {{ item_form.produto|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group">
+            {{ item_form.quantidade.label_tag }}
+            {{ item_form.quantidade|add_class:"form-control" }}
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 Registrar Venda</button>
+        <a href="{% url 'movimentacoes_estoque' %}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
 {% endblock %}
