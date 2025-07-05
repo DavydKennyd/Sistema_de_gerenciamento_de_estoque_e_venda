@@ -5,8 +5,82 @@
 {% block title %}🛒 Nova Venda{% endblock %}
 
 {% block content %}
+
+<style>
+    .container {
+        max-width: 600px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 40px auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        margin-bottom: 25px;
+        color: #333;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+    }
+
+    h2::before {
+        content: "🛒";
+        margin-right: 8px;
+        font-size: 28px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 15px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        margin-right: 8px;
+    }
+
+    .btn-success {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-success:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #545b62;
+    }
+
+</style>
+
 <div class="container">
-    <h2>🛒 Nova Venda</h2>
+    <h2>Nova Venda</h2>
 
     <form method="post">
         {% csrf_token %}
@@ -30,4 +104,5 @@
         <a href="{% url 'movimentacoes_estoque' %}" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
+
 {% endblock %}

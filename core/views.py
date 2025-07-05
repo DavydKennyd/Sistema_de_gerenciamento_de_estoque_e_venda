@@ -36,39 +36,28 @@ def relatorio_estoque_baixo(request):
 
 
 def nova_venda(request):
-    VendaItemFormSet = modelformset_factory(VendaItem, form=VendaItemForm, extra=1, can_delete=True)
-
     if request.method == 'POST':
         venda_form = VendaForm(request.POST)
-        formset = VendaItemFormSet(request.POST, queryset=VendaItem.objects.none())
+        item_form = VendaItemForm(request.POST)
 
-        if venda_form.is_valid() and formset.is_valid():
-            with transaction.atomic():
-                venda = venda_form.save()
+        if venda_form.is_valid() and item_form.is_valid():
+            venda = venda_form.save()
 
-                total = 0
-                for form in formset:
-                    if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
-                        item = form.save(commit=False)
-                        item.venda = venda
-                        item.preco_unitario = item.produto.preco
-                        item.save()
+            item = item_form.save(commit=False)
+            item.venda = venda
+            item.preco_unitario = item.produto.preco
+            item.save()
 
-                        # Atualiza o estoque
-                        item.produto.quantidade_estoque -= item.quantidade
-                        item.produto.save()
-
-                        total += item.quantidade * item.preco_unitario
-
-                venda.valor_total = total
-                venda.save()
+            # atualizar estoque
+            item.produto.quantidade_estoque -= item.quantidade
+            item.produto.save()
 
             return redirect('movimentacoes_estoque')
     else:
         venda_form = VendaForm()
-        formset = VendaItemFormSet(queryset=VendaItem.objects.none())
+        item_form = VendaItemForm()
 
     return render(request, 'core/nova_venda.html', {
         'venda_form': venda_form,
-        'formset': formset,
+        'item_form': item_form,
     })
