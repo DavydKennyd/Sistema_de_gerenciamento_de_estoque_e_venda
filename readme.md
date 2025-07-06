@@ -13,9 +13,6 @@ Sistema desenvolvido com Django para gerenciamento de estoque, movimentações d
   - Visualizar todas as movimentações de estoque
   - Cadastrar nova movimentação (entrada/saída)
 
-## 📸 Prints das telas implementadas
-
-> *[Adicionar aqui futuramente prints ou GIFs das páginas de movimentações]*
 
 ## 📂 Estrutura de Diretórios
 
@@ -53,8 +50,8 @@ estoque_vendas/
 
 ```bash
 
-git clone 
-cd seu-repo
+git clone https://github.com/DavydKennyd/Sistema_de_gerenciamento_de_estoque_e_venda.git
+cd repositorio_clonado
 ```
 - Crie o ambiente virtual e instale as dependências:
 
@@ -73,3 +70,14 @@ python manage.py migrate
 python manage.py runserver
 ```
 Acesse: http://127.0.0.1:8000/admin/
+
+## 📄 Licença
+ - Este projeto foi desenvolvido para fins acadêmicos e não possui fins comerciais.
+
+ ## Autor
+ -  Desenvolvido por [Davyd Kennyd](https://github.com/DavydKennyd)
+
+## Contato
+Para sugestões ou colaborações:
+- Email: Kennyd3030@gmail.co
+- LinkedIn: https://www.linkedin.com/in/davydkennyd
